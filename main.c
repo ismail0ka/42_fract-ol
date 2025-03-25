@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:34:33 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/23 04:52:56 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/25 23:12:00 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 	//smooth window managment
 	//clicking the window cross or ESC exits program cleanly
 	
-int main(int ac, const char **av)
+int main()//int ac, const char **av)
 {
 	void	*mlx;
 	void	*mlx_window;

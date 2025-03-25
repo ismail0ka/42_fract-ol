@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:47:46 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/22 21:38:03 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/25 23:12:22 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <errno.h>
 #include <math.h>
-#include "mlx.h"
+#include "../minilibx-linux/mlx.h"
 
 #endif //FRACTOL_H
