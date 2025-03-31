@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS=-Wall -Wextra -Werror -Iheaders -g3 -lm
+CFLAGS=-Wall -Wextra -Werror -Iheaders -g3 -lm -lX11 -lXext
 NAME=fractol
 ARCHIVES=minilibx-linux/libmlx_Linux.a
 
@@ -9,7 +9,7 @@ OBJS=$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(ARCHIVES) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
