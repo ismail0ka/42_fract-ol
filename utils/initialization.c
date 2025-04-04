@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 21:31:19 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/04 01:07:42 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:37:21 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,13 @@ void	fractal_init(t_fractal *f, const char **av, int ac)
 	else if (ft_strncmp(av[1], "julia", 5) == 0)
 	{
 		f->type = JULIA;
-		if (ac != 4)
+		if (ac == 2)
+		{
+			f->c.real = 0.285;
+			f->c.imaginary = 0.01;
+			return ;
+		}
+		else if (ac != 4)
 			(write(2, "Usage: ./fractol <Set> <julia param1> <julia param2>\n", 54), exit(EXIT_FAILURE));
 		if (is_valid_float(av[2]) && is_valid_float(av[3]))
 		{

@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 21:34:16 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/04 01:06:16 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:34:37 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ void render_fractal(t_mlx_data *mlx_data, t_fractal *fractal)
 	int	y;
 
 	x = -1;
-	y = -1;
 	while (++x < WIDTH)
     {
-        while (++y < HEIGHT)
+		y = -1;
+		while (++y < HEIGHT)
         {
             int iter = 0;
 			if (fractal->type == MANDELBROT)
-            	iter = mandelbrot(x, y);
+            	mandelbrot(x, y, &iter);
 			else if (fractal->type == JULIA)
-				iter = julia(x, y, fractal);
+				julia(x, y, &iter, fractal);
             int color = (iter == MAX_ITER) ? 0 : (iter * 255 / MAX_ITER);
-            my_mlx_put_pixel(&mlx_data->mlx_img, x, y, color);
+            my_mlx_put_pixel(&(mlx_data->mlx_img), x, y, color);
         }
     }
     mlx_put_image_to_window(mlx_data->mlx, mlx_data->mlx_window, mlx_data->mlx_img.img, 0, 0);
