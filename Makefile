@@ -3,7 +3,13 @@ CFLAGS=-Wall -Wextra -Werror -Iheaders -g3 -lm -lX11 -lXext
 NAME=fractol
 ARCHIVES=minilibx-linux/libmlx_Linux.a
 
-SRCS=main.c
+SRCS=main.c \
+	fractals/mandelbrot.c \
+	fractals/julia.c \
+	utils/initialization.c \
+	utils/render_fractal.c \
+	utils/ft_atof.c \
+	utils/ft_strncmp.c
 OBJS=$(SRCS:.c=.o)
 
 all: $(NAME)
