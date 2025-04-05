@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:47:46 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/04 15:30:29 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/05 23:16:34 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ typedef enum e_fractal_type
 typedef struct s_fractal{
 	t_fractal_type	type;
 	t_complex		c;
-	//t_complex		z;
-	//t_complex		min;
-	//t_complex		max;
-	//int				color;
+	t_complex		o;
+	double			zoom;
 }	t_fractal;
 
 //Utils
@@ -70,6 +68,10 @@ void	win_init(t_mlx_data *mlx_data);
 void	fractal_init(t_fractal *f, const char **av, int ac);
 //Rendering
 void	render_fractal(t_mlx_data *mlx_data, t_fractal *fractal);
-void	mandelbrot(int x, int y, int *iter);
+void	mandelbrot(int x, int y, int *iter, t_fractal *fractal);
 void	julia(int x, int y, int *iter, t_fractal *fractal);
+//Events
+int		handle_mouse(int button, int x, int y, t_mlx_data *mlx_data, t_fractal *fractal);
+int		close_window(t_mlx_data *mlx_data);
+int		handle_esc(int keycode, t_mlx_data *mlx_data);
 #endif //FRACTOL_H

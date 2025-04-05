@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 21:34:16 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/04 15:34:37 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/05 22:30:21 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void render_fractal(t_mlx_data *mlx_data, t_fractal *fractal)
         {
             int iter = 0;
 			if (fractal->type == MANDELBROT)
-            	mandelbrot(x, y, &iter);
+            	mandelbrot(x, y, &iter, fractal);
 			else if (fractal->type == JULIA)
 				julia(x, y, &iter, fractal);
             int color = (iter == MAX_ITER) ? 0 : (iter * 255 / MAX_ITER);

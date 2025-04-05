@@ -9,7 +9,8 @@ SRCS=main.c \
 	utils/initialization.c \
 	utils/render_fractal.c \
 	utils/ft_atof.c \
-	utils/ft_strncmp.c
+	utils/ft_strncmp.c \
+	utils/events.c
 OBJS=$(SRCS:.c=.o)
 
 all: $(NAME)
@@ -20,7 +21,7 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 clean:
-	rm -rf *.o
+	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf fractol
