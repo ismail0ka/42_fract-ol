@@ -6,37 +6,39 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 22:56:20 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/05 23:17:15 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:18:10 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdio.h>
 
 static void	zoom_in(t_fractal *fractal, double zoom_factor, int x, int y)
 {
-	fractal->zoom *= zoom_factor;
+	printf("Zoom in: %f\n", fractal->zoom);
+	fractal->zoom += zoom_factor;
 	fractal->o.real += (x - WIDTH / 2.0) * 4.0 / (WIDTH * fractal->zoom);
 	fractal->o.imaginary += (y - HEIGHT / 2.0) * 4.0 / (HEIGHT * fractal->zoom);
 }
 
 static void	zoom_out(t_fractal *fractal, double zoom_factor, int x, int y)
 {
-	fractal->zoom /= zoom_factor;
+	fractal->zoom -= zoom_factor;
 	fractal->o.real -= (x - WIDTH / 2.0) * 4.0 / (WIDTH * fractal->zoom);
 	fractal->o.imaginary -= (y - HEIGHT / 2.0) * 4.0 / (HEIGHT * fractal->zoom);
 }
 
-int	handle_mouse(int button, int x, int y, t_mlx_data *mlx_data, t_fractal *fractal)
+int	handle_mouse(int button, int x, int y, t_fractal *fractal)
 {
 	if (button == 4)
 	{
 		zoom_in(fractal, 1.1, x , y);
-		render_fractal(mlx_data, fractal);
+		render_fractal(fractal);
 	}
 	else if (button == 5)
 	{
 		zoom_out(fractal, 1.1, x , y);
-		render_fractal(mlx_data, fractal);
+		render_fractal(fractal);
 	}
 	return (0);
 }

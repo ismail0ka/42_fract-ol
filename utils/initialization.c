@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 21:31:19 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/05 22:28:17 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:10:38 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ void	win_init(t_mlx_data *mlx_data)
 			&mlx_data->mlx_img.endian);
 }
 
-void	fractal_init(t_fractal *f, const char **av, int ac)
+void	fractal_params(t_fractal *f, const char **av, int ac)
 {
+	f->zoom = 1;
+	f->o.real = 0;
+	f->o.imaginary = 0;
 	if (ft_strncmp(av[1], "mandelbrot", 9) == 0)
 		f->type = MANDELBROT;
 	else if (ft_strncmp(av[1], "julia", 5) == 0)
