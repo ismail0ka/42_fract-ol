@@ -24,7 +24,7 @@ int main(int ac, const char **av)
 	fractal.o.real = 0;
 	fractal.o.imaginary = 0;
 	render_fractal(&mlx_data, &fractal);
-	//mlx_mouse_hook(mlx_data.mlx_window, handle_mouse, &fractal);
+	mlx_mouse_hook(mlx_data.mlx_window, handle_mouse, &fractal);
 	mlx_key_hook(mlx_data.mlx_window, handle_esc, &mlx_data);
 	mlx_hook(mlx_data.mlx_window, 17, 0L, close_window, &mlx_data);
 	mlx_loop(mlx_data.mlx);
