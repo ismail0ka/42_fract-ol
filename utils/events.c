@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 22:56:20 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/09 00:53:06 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:17:31 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,10 @@ static void	zoom_out(t_fractal *fractal, double zoom_factor, int x, int y)
 static void zoom_in(t_fractal *fractal, double zoom_factor, int x, int y)
 {
     double aspect_ratio = (double)WIDTH / (double)HEIGHT;
-    
-    // Save the complex coordinates under the mouse before zooming
+
     double mouse_re = (x - WIDTH / 2.0) * 4.0 / (WIDTH / fractal->zoom) + fractal->o.real;
     double mouse_im = (y - HEIGHT / 2.0) * 4.0 / (HEIGHT / fractal->zoom * aspect_ratio) + fractal->o.imaginary;
-    
-    // Adjust zoom level
     fractal->zoom *= zoom_factor;
-    
-    // Recalculate the origin to keep the point under the mouse at the same complex position
     fractal->o.real = mouse_re - (x - WIDTH / 2.0) * 4.0 / (WIDTH / fractal->zoom);
     fractal->o.imaginary = mouse_im - (y - HEIGHT / 2.0) * 4.0 / (HEIGHT / fractal->zoom * aspect_ratio);
     
@@ -49,15 +44,10 @@ static void zoom_in(t_fractal *fractal, double zoom_factor, int x, int y)
 static void zoom_out(t_fractal *fractal, double zoom_factor, int x, int y)
 {
     double aspect_ratio = (double)WIDTH / (double)HEIGHT;
-    
-    // Save the complex coordinates under the mouse before zooming
+
     double mouse_re = (x - WIDTH / 2.0) * 4.0 / (WIDTH / fractal->zoom) + fractal->o.real;
     double mouse_im = (y - HEIGHT / 2.0) * 4.0 / (HEIGHT / fractal->zoom * aspect_ratio) + fractal->o.imaginary;
-    
-    // Adjust zoom level
     fractal->zoom /= zoom_factor;
-    
-    // Recalculate the origin to keep the point under the mouse at the same complex position
     fractal->o.real = mouse_re - (x - WIDTH / 2.0) * 4.0 / (WIDTH / fractal->zoom);
     fractal->o.imaginary = mouse_im - (y - HEIGHT / 2.0) * 4.0 / (HEIGHT / fractal->zoom * aspect_ratio);
     
