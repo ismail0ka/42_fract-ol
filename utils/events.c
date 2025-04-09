@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 22:56:20 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/08 18:18:10 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/09 00:37:27 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 static void	zoom_in(t_fractal *fractal, double zoom_factor, int x, int y)
 {
 	printf("Zoom in: %f\n", fractal->zoom);
-	fractal->zoom += zoom_factor;
+	fractal->zoom *= zoom_factor;
 	fractal->o.real += (x - WIDTH / 2.0) * 4.0 / (WIDTH * fractal->zoom);
 	fractal->o.imaginary += (y - HEIGHT / 2.0) * 4.0 / (HEIGHT * fractal->zoom);
 }
 
 static void	zoom_out(t_fractal *fractal, double zoom_factor, int x, int y)
 {
-	fractal->zoom -= zoom_factor;
+	printf("Zoom out: %f\n", fractal->zoom);
+	fractal->zoom /= zoom_factor;
 	fractal->o.real -= (x - WIDTH / 2.0) * 4.0 / (WIDTH * fractal->zoom);
 	fractal->o.imaginary -= (y - HEIGHT / 2.0) * 4.0 / (HEIGHT * fractal->zoom);
 }
@@ -49,8 +50,10 @@ int	close_window(t_mlx_data *mlx_data)
 	exit(EXIT_SUCCESS);
 	return (0);
 }
-int	handle_esc(int keycode, t_mlx_data *mlx_data)
+int	handle_key(int keycode, t_mlx_data *mlx_data)
 {
+	
+	//Clean Up
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(mlx_data->mlx, mlx_data->mlx_window);

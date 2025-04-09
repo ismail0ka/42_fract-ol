@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 15:33:30 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/05 22:32:44 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/08 21:40:30 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	julia(int x, int y, int *iter,t_fractal *fractal)
 {
 	t_complex z = { 
-		.real = (x - WIDTH / 2.0) * 4.0 / (WIDTH * fractal->zoom) + fractal->o.real,
-		.imaginary = (y - HEIGHT / 2.0) * 4.0 / (HEIGHT * fractal->zoom) + fractal->o.imaginary
+		.real = (x - WIDTH / 2.0) * 4.0 / (WIDTH * fractal->zoom),
+		.imaginary = (y - HEIGHT / 2.0) * 4.0 / (HEIGHT * fractal->zoom),
 	};
 	t_complex c = fractal->c;
 
