@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 21:31:19 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/08 18:10:38 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:35:34 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	fractal_params(t_fractal *f, const char **av, int ac)
 		f->type = JULIA;
 		if (ac == 2)
 		{
-			f->c.real = 0.285;
-			f->c.imaginary = 0.01;
+			f->c.real = -0.4;
+			f->c.imaginary = 0.6;
 			return ;
 		}
 		else if (ac != 4)
