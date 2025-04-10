@@ -1,7 +1,8 @@
 CC=cc
-CFLAGS=-Wall -Wextra -Werror -Iheaders -g3 -lm -lX11 -lXext
+CFLAGS=-Wall -Wextra -Werror -Iheaders -g3
+LDFLAGS=-lm -lX11 -lXext
 NAME=fractol
-ARCHIVES=minilibx-linux/libmlx_Linux.a
+ARCHIVES=.minilibx-linux/libmlx_Linux.a
 
 SRCS=main.c \
 	fractals/mandelbrot.c \
@@ -15,8 +16,11 @@ OBJS=$(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(ARCHIVES) -o $(NAME)
+$(NAME): $(OBJS) $(ARCHIVES)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(ARCHIVES) -o $(NAME)
+
+$(ARCHIVES):
+	$(MAKE) -C .minilibx-linux/
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

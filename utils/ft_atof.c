@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 17:52:02 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/03 21:24:12 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:24:24 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static int	clean_spaces(const char *str, int *sign)
 		i++;
 	if (str[i] == '-')
 	{
-		*sign = 1;
+		*sign = -1;
 		i++;
 	}
 	else if (str[i] == '+')
 	{
-		*sign = 0;
+		*sign = 1;
 		i++;
 	}
 	return (i);
@@ -58,5 +58,5 @@ double	ft_atof(const char *str)
 			i++;
 		}
 	}
-	return (res);
+	return ((double)sign * res);
 }

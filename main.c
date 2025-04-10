@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:34:33 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/08 22:01:02 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:49:30 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,22 @@ static void	fractal_init(t_fractal *fractal)
 	fractal->zoom = 1.0;
 }
 
-int main(int ac, const char **av)
+int	main(int ac, const char **av)
 {
 	t_fractal	*fractal;
 
 	if (ac < 2)
-		return (write(2, "Usage: ./fractol <Set> <julia param1> <julia param2>\n", 54), EXIT_FAILURE);
+	{
+		write(2, "Usage: ./fractol <Set> <julia param1> <julia param2>\n", 54);
+		exit(EXIT_FAILURE);
+	}
 	fractal = malloc(sizeof(t_fractal));
 	(fractal_init(fractal), win_init(fractal->mlx_data));
 	fractal_params(fractal, av, ac);
 	render_fractal(fractal);
 	mlx_mouse_hook(fractal->mlx_data->mlx_window, handle_mouse, fractal);
-	mlx_key_hook(fractal->mlx_data->mlx_window, handle_key, fractal->mlx_data);
-	mlx_hook(fractal->mlx_data->mlx_window, 17, 0L, close_window, fractal->mlx_data);
+	mlx_key_hook(fractal->mlx_data->mlx_window, handle_key, fractal);
+	mlx_hook(fractal->mlx_data->mlx_window, 17, 0L, close_window, fractal);
 	mlx_loop(fractal->mlx_data->mlx);
-	return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }

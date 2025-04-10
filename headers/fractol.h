@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:47:46 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/08 21:41:44 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:37:37 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef FRACTOL_H
-#define FRACTOL_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <math.h>
-#include "../minilibx-linux/mlx.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <errno.h>
+# include <math.h>
+# include "../.minilibx-linux/mlx.h"
 
-#define HEIGHT 600
-#define WIDTH 900
-#define MAX_ITER 100
+# define HEIGHT 600
+# define WIDTH 900
+# define MAX_ITER 200
 
 typedef struct s_mlx_img
 {
@@ -52,7 +52,8 @@ typedef enum e_fractal_type
 	JULIA,
 }	t_fractal_type;
 
-typedef struct s_fractal{
+typedef struct s_fractal
+{
 	t_mlx_data		*mlx_data;
 	t_fractal_type	type;
 	t_complex		c;
@@ -73,6 +74,6 @@ void	mandelbrot(int x, int y, int *iter, t_fractal *fractal);
 void	julia(int x, int y, int *iter, t_fractal *fractal);
 //Events
 int		handle_mouse(int button, int x, int y, t_fractal *fractal);
-int		handle_key(int keycode, t_mlx_data *mlx_data);
-int		close_window(t_mlx_data *mlx_data);
+int		handle_key(int keycode, t_fractal *f);
+int		close_window(t_fractal *f);
 #endif //FRACTOL_H
